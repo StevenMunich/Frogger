@@ -5,6 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Frogger Game</title>
     <style>
+        .button{
+            position: absolute;
+            width: 35px;
+            height: 20px;
+            color: white;
+            background-color: blue;
+            border: 2px solid #043e80;
+            visibility: hidden;
+            }
+        @media only screen and (max-width: 1080px)  {
+            
+            .button{
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            color: white;
+            background-color: blue;
+            border: 2px solid #043e80;
+            visibility: visible;
+        }
+        }
+        
         body {
             display: flex;
             justify-content: center;
@@ -43,6 +65,10 @@
     <div id="game">
         <img src="frenzone.jpg" class="frenzone">
         <img id="frog" class="frog" src="fren.jpg">
+        <div id="leftButton" class="button">←</div>
+        <div id="rightButton" class="button">→</div>
+        <div id="upButton" class="button">↑</div>
+        <div id="downButton" class="button">↓</div>
     </div>
     <script>
         const game = document.getElementById('game');
@@ -55,6 +81,50 @@
 
         frog.style.left = `${frogX}px`;
         frog.style.top = `${frogY}px`;
+
+       function checkPhone(){
+         //phone buttons
+        let leftButton = document.getElementById('leftButton');
+        leftButton.style.left = `${frogX - 50}px`;
+        leftButton.style.top = `${frogY}px`;
+        leftButton.addEventListener('click', () => {
+            if (frogX > 0) 
+            frogX -= frogSize;
+            frog.style.left = `${frogX}px`;
+            checkCollision();
+        });
+
+        let RightButton = document.getElementById('rightButton');
+        RightButton.style.left = `${frogX + 50}px`;
+        RightButton.style.top = `${frogY}px`;
+        RightButton.addEventListener('click', () => {
+            if (frogX < gameWidth - frogSize) 
+            frogX += frogSize;
+            frog.style.left = `${frogX}px`;
+            checkCollision();
+        });
+       let upButton = document.getElementById('upButton');   
+       upButton.style.left = `${frogX}px`;
+       upButton.style.top = `${frogY - 50}px`;
+       upButton.addEventListener('click', () => {
+                if (frogY > 0) 
+                frogY -= frogSize;
+                frog.style.left = `${frogX}px`;
+                frog.style.top = `${frogY}px`;
+                checkCollision();
+          });
+            
+       downButton.style.left = `${frogX}px`;
+       downButton.style.top = `${frogY + 20}px`;
+         downButton.addEventListener('click', () => {
+                if (frogY < gameHeight - frogSize) 
+                frogY += frogSize;
+                frog.style.left = `${frogX}px`;
+                frog.style.top = `${frogY}px`;
+                checkCollision();
+          });
+       }
+      
 
         document.addEventListener('keydown', (e) => {
             switch (e.key) {
@@ -144,13 +214,14 @@
             }
         }
         function startGame() {
+            
             setInterval(() => {
                 const carY = Math.floor(Math.random() * (gameHeight / frogSize)) * frogSize;
                 createCar(carY);
                 checkWin();                
             }, 1000);
         }
-
+        checkPhone();
         startGame();
     </script>
 </body>
