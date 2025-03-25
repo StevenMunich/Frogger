@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frogger Game</title>
+    <style>
+        .button{
+            position: absolute;
+            width: 35px;
+            height: 20px;
+            color: white;
+            background-color: blue;
+            border: 2px solid #043e80;
+            visibility: hidden;
+            }
+        @media only screen and (max-width: 1080px)  {
+            
+            .button{
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            color: white;
+            background-color: blue;
+            border: 2px solid #043e80;
+            visibility: visible;
+        }
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #000;
+        }
+        #game {
+            position: relative;
+            width: 400px;
+            height: 800px;
+            background-color: #7ec850;
+        }
+        .frog {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background-color: #00ff00;
+        }
+        .car {
+            position: absolute;
+            width: 60px;
+            height: 40px;
+            background-color: #f11818;           
+        }
+        .frenzone {
+            position: relative;
+            width: 400px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="game">
+        <img src="frenzone.jpg" class="frenzone" alt="Frenzone">
+        <img id="frog" class="frog" src="fren.jpg" alt="Frog">
+        <div id="leftButton" class="button">←</div>
+        <div id="rightButton" class="button">→</div>
+        <div id="upButton" class="button">↑</div>
+        <div id="downButton" class="button">↓</div>
+    </div>
+    <script src="script.js">
+        
+    </script>
+</body>
+</html>
